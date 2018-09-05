@@ -6,6 +6,8 @@ const MAX_NUMBER_OF_BLOCKS = 40000;
 // play with this number to get count of needed blocks ( can be from range 9 - 40000)
 const RANDOMLY_GENERATED_NUMBER_IN_RANGE = 100;
 
+const coefOfPxl = 400*300/RANDOMLY_GENERATED_NUMBER_IN_RANGE;
+
 function generateGrid(parentBlock) {
 
     // condition to get out from recursion (need to be improved)
@@ -20,7 +22,7 @@ function generateGrid(parentBlock) {
         let childWidth;
         let childHeight;
 
-        let randomPercentToDivide = getRandomIntInclusive(33, 66);
+        let randomPercentToDivide = getRandomIntInclusive(25, 75);
         // if (parentW >= parentH) {
         //     childWidth = parentW * (randomPercentToDivide / 100);
         // } else {
@@ -28,7 +30,7 @@ function generateGrid(parentBlock) {
         // }
 
         // condition to get out from recursion (need to be improved)
-        if ((parentW >= 50 || parentH >= 50)) {
+        if ((parentW*parentH > coefOfPxl)) {
 
             // if (!parentBlock.className === 'parent-rect') {
             //     const newParentBlock = document.createElement('div');

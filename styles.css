@@ -74,9 +74,9 @@ body {
 }
 
 .bigger_width {
-    grid-column-gap: 2px;
+    grid-column-gap: 1px;
 }
 
 .bigger_height {
-    grid-row-gap: 2px;
+    grid-row-gap: 1px;
 }
