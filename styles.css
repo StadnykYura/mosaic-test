@@ -2,7 +2,8 @@ body {
     font-family: sans-serif;
     font-size: 0.9em;
 }
-*{
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -54,17 +55,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    
 }
 
-.parent-block-start{
+.parent-block-start {
     width: 400;
     height: 300;
 }
 
 .parent-block {
-    display : grid;
+    display: grid;
     justify-content: space-between;
     align-content: space-between;
     background-color: 'none';
@@ -74,7 +73,7 @@ body {
     background-color: white;
 }
 
-.bigger_width{
+.bigger_width {
     grid-column-gap: 2px;
 }
 
