@@ -49,8 +49,8 @@ body {
 }
 
 .parent-rect {
-    width: 500px;
-    height: 400px;
+    width: 405px;
+    height: 304px;
     background-color: grey;
     display: flex;
     align-items: center;

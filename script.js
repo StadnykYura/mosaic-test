@@ -81,12 +81,17 @@ document.getElementById('generate-btn').addEventListener('click', function(){
 
 });
 
-// function changeBackgroundColor(){
+function changeBackgroundColor(e){
 
-//     let colorBtnColor = document.getElementById('bg-color').value;
+    let colorBtnColor = document.getElementById('bg-color').value;
+    let mainRect = document.querySelector('.parent-rect');
+    mainRect.style.backgroundColor = colorBtnColor;
 
+}
 
-// }
+let backGroundInputEl = document.getElementById('bg-color');
+
+backGroundInputEl.addEventListener('input', changeBackgroundColor);
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
