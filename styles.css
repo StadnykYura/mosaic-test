@@ -76,12 +76,12 @@ body {
 
 .bigger_width {
     grid-column-gap: 2px;
-    justify-content: stretch;
+    justify-content: space-between;
 }
 
 .bigger_height {
     grid-row-gap: 2px;
-    align-content: stretch;
+    align-content: space-between;
 }
 
 .active-item {
