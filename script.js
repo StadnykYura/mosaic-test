@@ -1,10 +1,13 @@
 let parentRect = document.querySelector('.parent-rect').children[0];
 
 const MIN_NUMBER_OF_BLOCKS = 9;
-const MAX_NUMBER_OF_BLOCKS = 1000;
+const MAX_NUMBER_OF_BLOCKS = 500;
 let randomNumber;
 let coeficientOfDividing;
 let totalNumberOfBlocks = 1;
+
+
+let activeItem;
 
 function generateGrid(parentBlock) {
 
@@ -23,7 +26,7 @@ function generateGrid(parentBlock) {
         let randomPercentToDivide = getRandomIntInclusive(25, 75);
 
         // condition to get out from recursion (need to be improved)
-        if ((parentW*parentH > coeficientOfDividing)) {
+        if ((parentW * parentH > coeficientOfDividing)) {
 
             if (parentW >= parentH) {
                 childWidthBlockAPercent = randomPercentToDivide;
@@ -34,7 +37,7 @@ function generateGrid(parentBlock) {
             } else {
                 childHeightBlockAPercent = randomPercentToDivide;
                 childHeightBlockBPercent = 100 - childHeightBlockAPercent;
-                parentBlock.style.gridTemplateRows = `${(parentH * childHeightBlockAPercent/100) - 1.5} ${(parentH * childHeightBlockBPercent/100) - 1.5}`
+                parentBlock.style.gridTemplateRows = `${(parentH * childHeightBlockAPercent / 100) - 1.5} ${(parentH * childHeightBlockBPercent / 100) - 1.5}`
                 parentBlock.setAttribute('class', 'parent-block bigger_height');
                 parentBlock.style.gridTemplateColumns = `${parentW}`;
             }
@@ -49,7 +52,8 @@ function generateGrid(parentBlock) {
             divBlockB.setAttribute('class', 'child-block');
             divBlockB.setAttribute('id', totalNumberOfBlocks + 'b');
 
-
+            divBlockA.addEventListener('click', makingActive);
+            divBlockB.addEventListener('click', makingActive);
 
             parentBlock.appendChild(divBlockA);
             parentBlock.appendChild(divBlockB);
@@ -61,13 +65,13 @@ function generateGrid(parentBlock) {
     }
 
 }
-document.getElementById('generate-btn').addEventListener('click', function(){
-    
+document.getElementById('generate-btn').addEventListener('click', function () {
+
     randomNumber = getRandomIntInclusive(MIN_NUMBER_OF_BLOCKS, MAX_NUMBER_OF_BLOCKS);
     let parentBlock = document.querySelector('.parent-rect').children[0];
-    coeficientOfDividing = parentBlock.offsetWidth*parentBlock.offsetHeight/randomNumber;;
+    coeficientOfDividing = parentBlock.offsetWidth * parentBlock.offsetHeight / randomNumber;;
 
-    if (totalNumberOfBlocks !== 1){
+    if (totalNumberOfBlocks !== 1) {
         totalNumberOfBlocks = 1;
         let mainRect = parentBlock.parentElement;
         mainRect.removeChild(parentBlock);
@@ -76,22 +80,40 @@ document.getElementById('generate-btn').addEventListener('click', function(){
         mainRect.appendChild(newParentBlock);
         parentBlock = document.querySelector('.parent-block-start');
     }
-     generateGrid(parentBlock);
-   
+    generateGrid(parentBlock);
+
 
 });
 
-function changeBackgroundColor(e){
+function changeBackgroundColor(e) {
 
     let colorBtnColor = document.getElementById('bg-color').value;
     let mainRect = document.querySelector('.parent-rect');
     mainRect.style.backgroundColor = colorBtnColor;
 
 }
-
 let backGroundInputEl = document.getElementById('bg-color');
-
 backGroundInputEl.addEventListener('input', changeBackgroundColor);
+
+function makingActive(e) {
+    if (activeItem) {
+        activeItem.setAttribute('class', 'child-block not-active-item');
+    }
+    activeItem = e.target;
+    activeItem.setAttribute('class', 'child-block active-item');
+    fragmentColorInputEl.click();
+
+}
+
+function changeBlockColor(e) {
+    let colorBtnColor = document.getElementById('block-color').value;
+    activeItem.style.backgroundColor = colorBtnColor;
+}
+
+let fragmentColorInputEl = document.getElementById('block-color');
+
+fragmentColorInputEl.addEventListener('input', changeBlockColor);
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));

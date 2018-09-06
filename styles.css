@@ -83,3 +83,13 @@ body {
     grid-row-gap: 2px;
     align-content: stretch;
 }
+
+.active-item {
+    border: 1px solid red;
+    box-shadow: 0px 0px 5px 1px #a3a1a3;
+}
+
+.not-active-item {
+    box-shadow: 0px 0px 0px 0px;
+    border: none;
+}
