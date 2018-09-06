@@ -1,10 +1,16 @@
-let parentRect = document.querySelector('.parent-rect').children[0];
+let parentRect = document.querySelector('.parent-rect-start')
 
 const MIN_NUMBER_OF_BLOCKS = 9;
-const MAX_NUMBER_OF_BLOCKS = 500;
+const MAX_NUMBER_OF_BLOCKS = 100;
+const LOWER_RANGE_FOR_DIVIDING_BLOCK = 25;
+const UPPER_RANGE_FOR_DIIVIDING_BLOCK = 75;
+const HUNDRED_PERCENT = 100;
+const PXL_TO_CUT_DIVIDED_BLOCKS = 1.5;
+const STARTING_NUMBER_OF_BLOCKS = 1;
 let randomNumber;
 let coeficientOfDividing;
 let totalNumberOfBlocks = 1;
+
 
 
 let activeItem;
@@ -20,25 +26,31 @@ function generateGrid(parentBlock) {
         let childHeightBlockAPercent;
         let childWidthBlockBPercent;
         let childHeightBlockBPercent;
-        let childWidth;
-        let childHeight;
+        let childWidthA;
+        let childHeightA;
+        let childWidthB;
+        let childHeightB;
 
-        let randomPercentToDivide = getRandomIntInclusive(25, 75);
+        let randomPercentToDivide = getRandomIntInclusive(
+            LOWER_RANGE_FOR_DIVIDING_BLOCK, UPPER_RANGE_FOR_DIIVIDING_BLOCK);
 
         // condition to get out from recursion (need to be improved)
-        if ((parentW * parentH > coeficientOfDividing)) {
+        if (parentW * parentH > coeficientOfDividing) {
 
             if (parentW >= parentH) {
                 childWidthBlockAPercent = randomPercentToDivide;
-                childWidthBlockBPercent = 100 - childWidthBlockAPercent;
-                parentBlock.style.gridTemplateColumns = `${(parentW * childWidthBlockAPercent / 100) - 1.5} ${(parentW * childWidthBlockBPercent / 100) - 1.5}`
+                childWidthBlockBPercent = HUNDRED_PERCENT - childWidthBlockAPercent;
+                childWidthA = parentW * childWidthBlockAPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
+                childWidthB = parentW * childWidthBlockBPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
+                parentBlock.style.gridTemplateColumns = `${childWidthA} ${childWidthB}`
                 parentBlock.setAttribute('class', 'parent-block bigger_width');
                 parentBlock.style.gridTemplateRows = `${parentH}`;
-                parentBlock.removeEvent
             } else {
                 childHeightBlockAPercent = randomPercentToDivide;
-                childHeightBlockBPercent = 100 - childHeightBlockAPercent;
-                parentBlock.style.gridTemplateRows = `${(parentH * childHeightBlockAPercent / 100) - 1.5} ${(parentH * childHeightBlockBPercent / 100) - 1.5}`
+                childHeightBlockBPercent = HUNDRED_PERCENT - childHeightBlockAPercent;
+                childHeightA = parentH * childHeightBlockAPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
+                childHeightB = parentH * childHeightBlockBPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
+                parentBlock.style.gridTemplateRows = `${childHeightA} ${childHeightB}`
                 parentBlock.setAttribute('class', 'parent-block bigger_height');
                 parentBlock.style.gridTemplateColumns = `${parentW}`;
             }
@@ -70,11 +82,11 @@ function generateGrid(parentBlock) {
 document.getElementById('generate-btn').addEventListener('click', function () {
 
     randomNumber = getRandomIntInclusive(MIN_NUMBER_OF_BLOCKS, MAX_NUMBER_OF_BLOCKS);
-    let parentBlock = document.querySelector('.parent-rect').children[0];
-    coeficientOfDividing = parentBlock.offsetWidth * parentBlock.offsetHeight / randomNumber;;
+    let parentBlock = document.querySelector('.parent-rect').firstElementChild;
+    coeficientOfDividing = parentBlock.offsetWidth * parentBlock.offsetHeight / randomNumber;
 
-    if (totalNumberOfBlocks !== 1) {
-        totalNumberOfBlocks = 1;
+    if (totalNumberOfBlocks !== STARTING_NUMBER_OF_BLOCKS) {
+        totalNumberOfBlocks = STARTING_NUMBER_OF_BLOCKS;
         let mainRect = parentBlock.parentElement;
         mainRect.removeChild(parentBlock);
         const newParentBlock = document.createElement('div');
