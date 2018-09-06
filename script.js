@@ -37,17 +37,17 @@ function generateGrid(parentBlock) {
                 childWidthBlockBPercent = HUNDRED_PERCENT - childWidthBlockAPercent;
                 childWidthA = parentW * childWidthBlockAPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
                 childWidthB = parentW * childWidthBlockBPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
-                parentBlock.style.gridTemplateColumns = `${childWidthA} ${childWidthB}`
+                parentBlock.style.gridTemplateColumns = `${childWidthA}px ${childWidthB}px`
                 parentBlock.setAttribute('class', 'parent-block bigger_width');
-                parentBlock.style.gridTemplateRows = `${parentH}`;
+                parentBlock.style.gridTemplateRows = `${parentH}px`;
             } else {
                 childHeightBlockAPercent = randomPercentToDivide;
                 childHeightBlockBPercent = HUNDRED_PERCENT - childHeightBlockAPercent;
                 childHeightA = parentH * childHeightBlockAPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
                 childHeightB = parentH * childHeightBlockBPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
-                parentBlock.style.gridTemplateRows = `${childHeightA} ${childHeightB}`
+                parentBlock.style.gridTemplateRows = `${childHeightA}px ${childHeightB}px`
                 parentBlock.setAttribute('class', 'parent-block bigger_height');
-                parentBlock.style.gridTemplateColumns = `${parentW}`;
+                parentBlock.style.gridTemplateColumns = `${parentW}px`;
             }
 
 
