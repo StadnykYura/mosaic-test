@@ -34,6 +34,7 @@ function generateGrid(parentBlock) {
                 parentBlock.style.gridTemplateColumns = `${(parentW * childWidthBlockAPercent / 100) - 1.5} ${(parentW * childWidthBlockBPercent / 100) - 1.5}`
                 parentBlock.setAttribute('class', 'parent-block bigger_width');
                 parentBlock.style.gridTemplateRows = `${parentH}`;
+                parentBlock.removeEvent
             } else {
                 childHeightBlockAPercent = randomPercentToDivide;
                 childHeightBlockBPercent = 100 - childHeightBlockAPercent;
@@ -54,6 +55,7 @@ function generateGrid(parentBlock) {
 
             divBlockA.addEventListener('click', makingActive);
             divBlockB.addEventListener('click', makingActive);
+            parentBlock.removeEventListener('click', makingActive);
 
             parentBlock.appendChild(divBlockA);
             parentBlock.appendChild(divBlockB);
