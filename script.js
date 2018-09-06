@@ -1,5 +1,3 @@
-let parentRect = document.querySelector('.parent-rect-start')
-
 const MIN_NUMBER_OF_BLOCKS = 9;
 const MAX_NUMBER_OF_BLOCKS = 100;
 const LOWER_RANGE_FOR_DIVIDING_BLOCK = 25;
@@ -10,9 +8,6 @@ const STARTING_NUMBER_OF_BLOCKS = 1;
 let randomNumber;
 let coeficientOfDividing;
 let totalNumberOfBlocks = 1;
-
-
-
 let activeItem;
 
 function generateGrid(parentBlock) {

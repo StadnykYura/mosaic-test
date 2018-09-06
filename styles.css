@@ -46,8 +46,8 @@ body {
 }
 
 .parent-rect {
-    width: 405px;
-    height: 304px;
+    width: 1000px;
+    height: 700px;
     background-color: #808080;
     display: flex;
     align-items: center;
@@ -55,8 +55,8 @@ body {
 }
 
 .parent-block-start {
-    width: 400;
-    height: 300;
+    width: 990;
+    height: 690;
 }
 
 .parent-block {
