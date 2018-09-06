@@ -104,25 +104,30 @@ function changeBackgroundColor(e) {
 let backGroundInputEl = document.getElementById('bg-color');
 backGroundInputEl.addEventListener('input', changeBackgroundColor);
 
-function makingActive(e) {
-    if (activeItem) {
-        activeItem.setAttribute('class', 'child-block not-active-item');
-    }
-    activeItem = e.target;
-    activeItem.setAttribute('class', 'child-block active-item');
-    fragmentColorInputEl.click();
-
-}
-
-function changeBlockColor(e) {
-    let colorBtnColor = document.getElementById('block-color').value;
-    activeItem.style.backgroundColor = colorBtnColor;
-}
 
 let fragmentColorInputEl = document.getElementById('block-color');
 
 fragmentColorInputEl.addEventListener('input', changeBlockColor);
 
+function makingActive(e) {
+
+    if (activeItem) {
+        activeItem.setAttribute('class', 'child-block not-active-item');
+    }
+
+    activeItem = e.target;
+    let fragmentColor = activeItem.style.backgroundColor;
+    let rgb = fragmentColor.split(',');
+    fragmentColorInputEl.value = rgb.length !== 3 ? "#ffffff" : rgbToHex(rgb[0].substring(4), rgb[1].trim(), rgb[2].substring(1,4));
+    activeItem.setAttribute('class', 'child-block active-item');
+    // fragmentColorInputEl.click();
+}
+
+
+function changeBlockColor(e) {
+    let colorBtnColor = document.getElementById('block-color').value;
+    activeItem.style.backgroundColor = colorBtnColor;
+}
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -133,4 +138,13 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     let valueToMakeMaxInclusive = 1;
     return Math.floor(Math.random() * (max - min + valueToMakeMaxInclusive)) + min;
+}
+
+function componentToHex(c) {
+    let hex = parseInt(c).toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
