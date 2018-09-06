@@ -1,7 +1,7 @@
 let parentRect = document.querySelector('.parent-rect').children[0];
 
 const MIN_NUMBER_OF_BLOCKS = 9;
-const MAX_NUMBER_OF_BLOCKS = 40000;
+const MAX_NUMBER_OF_BLOCKS = 1000;
 let randomNumber;
 let coeficientOfDividing;
 let totalNumberOfBlocks = 1;
@@ -63,7 +63,7 @@ function generateGrid(parentBlock) {
 }
 document.getElementById('generate-btn').addEventListener('click', function(){
     
-    randomNumber = getRandomIntInclusive(9, 10000);
+    randomNumber = getRandomIntInclusive(MIN_NUMBER_OF_BLOCKS, MAX_NUMBER_OF_BLOCKS);
     let parentBlock = document.querySelector('.parent-rect').children[0];
     coeficientOfDividing = parentBlock.offsetWidth*parentBlock.offsetHeight/randomNumber;;
 
