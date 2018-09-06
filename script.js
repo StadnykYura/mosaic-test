@@ -1,17 +1,15 @@
 let parentRect = document.querySelector('.parent-rect').children[0];
-let totalNumberOfBlocks = 1;
+
 const MIN_NUMBER_OF_BLOCKS = 9;
 const MAX_NUMBER_OF_BLOCKS = 40000;
-
-// play with this number to get count of needed blocks ( can be from range 9 - 40000)
-const RANDOMLY_GENERATED_NUMBER_IN_RANGE = 100;
-
-const coefOfPxl = 400*300/RANDOMLY_GENERATED_NUMBER_IN_RANGE;
+let randomNumber;
+let coeficientOfDividing;
+let totalNumberOfBlocks = 1;
 
 function generateGrid(parentBlock) {
 
     // condition to get out from recursion (need to be improved)
-    if (totalNumberOfBlocks < RANDOMLY_GENERATED_NUMBER_IN_RANGE) {
+    if (totalNumberOfBlocks < randomNumber) {
 
         const parentW = parentBlock.offsetWidth;
         const parentH = parentBlock.offsetHeight;
@@ -23,35 +21,20 @@ function generateGrid(parentBlock) {
         let childHeight;
 
         let randomPercentToDivide = getRandomIntInclusive(25, 75);
-        // if (parentW >= parentH) {
-        //     childWidth = parentW * (randomPercentToDivide / 100);
-        // } else {
-        //     childHeight = parentH * (randomPercentToDivide / 100);
-        // }
 
         // condition to get out from recursion (need to be improved)
-        if ((parentW*parentH > coefOfPxl)) {
-
-            // if (!parentBlock.className === 'parent-rect') {
-            //     const newParentBlock = document.createElement('div');
-            //     newParentBlock.setAttribute('class', 'parent-block');
-            //     newParentBlock.setAttribute('width', parentW);
-            //     newParentBlock.setAttribute('height', parentW);
-            //     parentBlock.appendChild(newParentBlock);
-            //     parentBlock = newParentBlock;
-            // }
+        if ((parentW*parentH > coeficientOfDividing)) {
 
             if (parentW >= parentH) {
                 childWidthBlockAPercent = randomPercentToDivide;
                 childWidthBlockBPercent = 100 - childWidthBlockAPercent;
-                parentBlock.style.gridTemplateColumns = `${(parentW * childWidthBlockAPercent / 100) - 1} ${(parentW * childWidthBlockBPercent / 100) - 1}`
+                parentBlock.style.gridTemplateColumns = `${(parentW * childWidthBlockAPercent / 100) - 1.5} ${(parentW * childWidthBlockBPercent / 100) - 1.5}`
                 parentBlock.setAttribute('class', 'parent-block bigger_width');
-
                 parentBlock.style.gridTemplateRows = `${parentH}`;
             } else {
                 childHeightBlockAPercent = randomPercentToDivide;
                 childHeightBlockBPercent = 100 - childHeightBlockAPercent;
-                parentBlock.style.gridTemplateRows = `${(parentH * childHeightBlockAPercent/100) - 1} ${(parentH * childHeightBlockBPercent/100) - 1}`
+                parentBlock.style.gridTemplateRows = `${(parentH * childHeightBlockAPercent/100) - 1.5} ${(parentH * childHeightBlockBPercent/100) - 1.5}`
                 parentBlock.setAttribute('class', 'parent-block bigger_height');
                 parentBlock.style.gridTemplateColumns = `${parentW}`;
             }
@@ -66,6 +49,8 @@ function generateGrid(parentBlock) {
             divBlockB.setAttribute('class', 'child-block');
             divBlockB.setAttribute('id', totalNumberOfBlocks + 'b');
 
+
+
             parentBlock.appendChild(divBlockA);
             parentBlock.appendChild(divBlockB);
 
@@ -76,8 +61,32 @@ function generateGrid(parentBlock) {
     }
 
 }
+document.getElementById('generate-btn').addEventListener('click', function(){
+    
+    randomNumber = getRandomIntInclusive(9, 10000);
+    let parentBlock = document.querySelector('.parent-rect').children[0];
+    coeficientOfDividing = parentBlock.offsetWidth*parentBlock.offsetHeight/randomNumber;;
 
-generateGrid(parentRect);
+    if (totalNumberOfBlocks !== 1){
+        totalNumberOfBlocks = 1;
+        let mainRect = parentBlock.parentElement;
+        mainRect.removeChild(parentBlock);
+        const newParentBlock = document.createElement('div');
+        newParentBlock.setAttribute('class', 'parent-block-start');
+        mainRect.appendChild(newParentBlock);
+        parentBlock = document.querySelector('.parent-block-start');
+    }
+     generateGrid(parentBlock);
+   
+
+});
+
+// function changeBackgroundColor(){
+
+//     let colorBtnColor = document.getElementById('bg-color').value;
+
+
+// }
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));

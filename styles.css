@@ -64,19 +64,22 @@ body {
 
 .parent-block {
     display: grid;
-    justify-content: space-between;
-    align-content: space-between;
     background-color: 'none';
 }
 
 .child-block {
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bigger_width {
-    grid-column-gap: 1px;
+    grid-column-gap: 2px;
+    justify-content: stretch;
 }
 
 .bigger_height {
-    grid-row-gap: 1px;
+    grid-row-gap: 2px;
+    align-content: stretch;
 }
