@@ -120,7 +120,7 @@ function makingActive(e) {
     let fragmentColor = activeItem.style.backgroundColor;
     let rgb = fragmentColor.split(',');
     fragmentColorInputEl.value = rgb.length !== NUMBER_OF_RGB_ARRAY_ELEMENTS ?
-         '#ffffff' : rgbToHex(rgb[0].substring(4), rgb[1].trim(), rgb[2].substring(1, 4));
+        '#ffffff' : rgbToHex(rgb[0].substring(4), rgb[1].trim(), rgb[2].substring(1, 4));
     activeItem.setAttribute('class', 'child-block active-item');
     // fragmentColorInputEl.click();
 }

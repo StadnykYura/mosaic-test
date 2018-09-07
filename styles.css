@@ -10,7 +10,7 @@ body {
     padding: 0;
 }
 
-.main{
+.main {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,7 +50,7 @@ body {
 
 #generate-btn {
     background: #17dfb5;
-    color : white;
+    color: white;
     padding: 5px;
     border-radius: 6px;
     border: 1px solid #37c3a2;
