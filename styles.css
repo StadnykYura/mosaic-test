@@ -38,17 +38,15 @@ body {
     margin: 20px 0;
     align-items: center;
     justify-content: space-between;
-    width: 1000px;
+    width: 800px;
 }
 
 .color-buttons {
-    width: 55%;
+    width: 65%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-
 
 #generate-btn {
     background: #17dfb5;
@@ -64,8 +62,8 @@ body {
 }
 
 .parent-rect {
-    width: 1000px;
-    height: 700px;
+    width: 800px;
+    height: 500px;
     background-color: #808080;
     display: flex;
     align-items: center;
@@ -73,8 +71,8 @@ body {
 }
 
 .parent-block-start {
-    width: 993px;
-    height: 690px;
+    width: 795px;
+    height: 495px;
 }
 
 .parent-block {
@@ -84,10 +82,6 @@ body {
 
 .child-block {
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
 }
 
 .bigger_width {

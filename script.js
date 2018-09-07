@@ -45,7 +45,7 @@ function generateGrid(parentBlock) {
                 childHeightBlockAPercent = randomPercentToDivide;
                 childHeightBlockBPercent = HUNDRED_PERCENT - childHeightBlockAPercent;
                 childHeightA = parentH * childHeightBlockAPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
-                childHeightB = parentH * childHeightBlockBPercent / HUNDRED_PERCENT; -PXL_TO_CUT_DIVIDED_BLOCKS;
+                childHeightB = parentH * childHeightBlockBPercent / HUNDRED_PERCENT - PXL_TO_CUT_DIVIDED_BLOCKS;
                 parentBlock.style.gridTemplateRows = `${childHeightA}px ${childHeightB}px`
                 parentBlock.setAttribute('class', 'parent-block bigger_height');
                 parentBlock.style.gridTemplateColumns = `${parentW}px`;
