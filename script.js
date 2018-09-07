@@ -5,6 +5,7 @@ const UPPER_RANGE_FOR_DIIVIDING_BLOCK = 75;
 const HUNDRED_PERCENT = 100;
 const PXL_TO_CUT_DIVIDED_BLOCKS = 2;
 const STARTING_NUMBER_OF_BLOCKS = 1;
+const NUMBER_OF_RGB_ARRAY_ELEMENTS = 3
 let randomNumber;
 let coeficientOfDividing;
 let totalNumberOfBlocks = 1;
@@ -118,7 +119,8 @@ function makingActive(e) {
     activeItem = e.target;
     let fragmentColor = activeItem.style.backgroundColor;
     let rgb = fragmentColor.split(',');
-    fragmentColorInputEl.value = rgb.length !== 3 ? "#ffffff" : rgbToHex(rgb[0].substring(4), rgb[1].trim(), rgb[2].substring(1,4));
+    fragmentColorInputEl.value = rgb.length !== NUMBER_OF_RGB_ARRAY_ELEMENTS ?
+         '#ffffff' : rgbToHex(rgb[0].substring(4), rgb[1].trim(), rgb[2].substring(1, 4));
     activeItem.setAttribute('class', 'child-block active-item');
     // fragmentColorInputEl.click();
 }
@@ -142,9 +144,9 @@ function getRandomIntInclusive(min, max) {
 
 function componentToHex(c) {
     let hex = parseInt(c).toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
+    return hex.length == 1 ? '0' + hex : hex;
 }
 
 function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
