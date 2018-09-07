@@ -1,12 +1,22 @@
 body {
     font-family: sans-serif;
     font-size: 0.9em;
+    background-color: #f4f9f5;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
 }
 
 #wrap {
@@ -16,29 +26,37 @@ body {
 }
 
 .color {
-    border: none;
-    padding: 0 2px;
+    border: 1px solid grey;
+    padding: 1px 3px;
     margin: 10px;
     width: 60px;
-    height: 25px;
+    height: 30px;
 }
 
 #buttons {
-    margin: 20px auto;
-    text-align: center;
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 1000px;
 }
 
-.margin-r {
-    margin-right: 100px;
+.color-buttons {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+
 
 #generate-btn {
     background: #17dfb5;
+    color : white;
     padding: 5px;
     border-radius: 6px;
     border: 1px solid #37c3a2;
     outline: none;
-    transition-duration: 1s;
 }
 
 #generate-btn:hover {
@@ -69,6 +87,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
 .bigger_width {
@@ -83,7 +102,7 @@ body {
 
 .active-item {
     border: 1px solid red;
-    box-shadow: 0px 0px 5px 1px #a3a1a3;
+    box-shadow: 0px 0px 5px 3px #a3a1a3;
 }
 
 .not-active-item {

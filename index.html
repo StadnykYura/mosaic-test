@@ -11,17 +11,25 @@
 </head>
 
 <body>
-    <div id="buttons">
-        <input type="color" class="color" value="#808080" id="bg-color" name="mosaic_border_color">
-        <label>Mosaic border color</label>
-        <input type="color" class="color" value="#ff7700" id="block-color" name="mosaic_bg_color">
-        <label class="margin-r">Fragment background color</label>
-
-        <input type="button" id="generate-btn" value="Generate New">
-    </div>
-    <div id="wrap">
-        <div class="parent-rect">
-            <div class='parent-block-start'></div>
+    <div class='main'>
+        <div id="buttons">
+            <div class="color-buttons">
+                    <div>
+                        <input type="color" class="color" value="#808080" id="bg-color" name="mosaic_border_color">
+                        <label>Mosaic border color</label>
+                    </div>
+                    <div>
+                        <input type="color" class="color" value="#ffffff" id="block-color" name="mosaic_bg_color">
+                        <label class="margin-r">Fragment background color</label>
+                    </div>
+            </div>
+            
+            <input type="button" id="generate-btn" value="Generate New">
+        </div>
+        <div id="wrap">
+            <div class="parent-rect">
+                <div class='parent-block-start'></div>
+            </div>
         </div>
     </div>
 
